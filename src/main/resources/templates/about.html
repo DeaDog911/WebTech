@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/styles/index.css}">
+    <link rel="icon" th:href="@{/images/icon.png}">
+    <title>О нас - Сайт о кино</title>
+</head>
+<body>
+<div class="wrapper">
+    <th:block th:insert="~{index :: header}"></th:block>
+
+    <main class="about-us">
+        <section class="team-info">
+            <h2>Наша команда</h2>
+            <p>Мы - команда энтузиастов кино, которые любят делиться своими впечатлениями, обсуждать последние новости, анализировать новые фильмы и интервьюировать талантливых режиссеров и актеров.</p>
+            <p>Наша цель - предоставить вам самую актуальную и интересную информацию из мира кино и развлечений.</p>
+        </section>
+
+        <section class="team-members">
+            <h2>Наша команда</h2>
+            <ul>
+                <li>
+                    <h3>Константин Андрусенко</h3>
+                    <p>Разработчик</p>
+                    <p>Единственный член команды и главный вдохновитель</p>
+                </li>
+                <!-- Добавьте остальных участников команды -->
+            </ul>
+        </section>
+    </main>
+
+
+    <th:block th:insert="~{index :: footer}"></th:block>
+</div>
+</body>
+</html>

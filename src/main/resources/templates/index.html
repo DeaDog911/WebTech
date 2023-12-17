@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/styles/index.css}">
+    <link rel="icon" th:href="@{/images/icon.png}">
+    <title>Главная страница - Сайт о кино</title>
+</head>
+<body>
+<div class="wrapper">
+    <header th:fragment="header" id="header">
+        <h1>Мир Кино</h1>
+        <nav>
+            <ul>
+                <li><a th:href="@{/}">Главная</a></li>
+                <li><a th:href="@{/about}">О нас</a></li>
+                <li><a th:href="@{/news}">Новости</a></li>
+                <li><a th:href="@{/contacts}">Контакты</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="upcoming-premieres">
+            <h2>Ожидаемые премьеры</h2>
+            <ul>
+                <li th:each="premier: ${premiers}" th:text=" ${premier.getTitle()} + ': ' + ${premier.getDescription()}"></li>
+            </ul>
+        </section>
+
+        <section class="movie-reviews">
+            <h2>Краткие обзоры фильмов</h2>
+            <article th:each="movieReview : ${movieReviews}">
+                <h3 th:text="'Фильм ' + ${movieReview.getTitle()}"></h3>
+                <img th:src="@{/images/{image} (image=${movieReview.getImageFileName()})}" alt="Изображение фильма">
+                <p th:text="${movieReview.getDescription()}"></p>
+                <a th:href="@{/reviews/{id} (id=${movieReview.getId()})}">Подробнее</a>
+            </article>
+
+        </section>
+    </main>
+
+    <footer th:fragment="footer">
+        <p>&copy; 2023 Сайт о кино</p>
+    </footer>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,111 @@
+/* Стили для основных элементов страницы */
+
+/* Сброс стилей и базовые настройки */
+body, h1, h2, p, ul, li {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
+    height: 100%;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+}
+
+header h1 {
+    margin-bottom: 10px;
+}
+
+nav ul {
+    list-style-type: none;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+main {
+    width: 80%;
+    margin: 20px auto;
+    flex-grow: 1;
+}
+
+article {
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+article h2 {
+    margin-bottom: 10px;
+}
+
+article p {
+    margin-bottom: 15px;
+}
+
+article img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    bottom: 0;
+    width: 100%;
+    position: absolute;
+}
+
+.wrapper {
+    position: relative;
+    min-height: 100%;
+    padding-bottom: 50px;
+}
+
+main {
+    width: 60%;
+}
+
+.upcoming-premieres ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* Стили для элементов списка ожидаемых премьер */
+.upcoming-premieres li {
+    margin-bottom: 10px;
+}
+
+a {
+    color: blue;
+    text-decoration: none;
+}
+
+.return_back_link {
+    font-size: 20px;
+}

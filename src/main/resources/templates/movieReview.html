@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/styles/index.css}">
+    <link rel="stylesheet" th:href="@{/styles/contacts.css}">
+    <link rel="icon" th:href="@{/images/icon.png}">
+    <title>Обзор фильма - Сайт о кино</title>
+</head>
+<body>
+
+<div class="wrapper">
+    <th:block th:insert="~{index :: header}"></th:block>
+
+    <main>
+        <section>
+            <a class="return_back_link" th:href="@{/}">Назад</a>
+            <article>
+                <h2 th:text="${movieReview.getTitle()}"></h2>
+                <img th:src="@{/images/{image} (image=${movieReview.getImageFileName()})}" alt="Изображение">
+                <p th:text="${movieReview.getText()}"></p>
+            </article>
+        </section>
+    </main>
+
+    <th:block th:insert="~{index :: footer}"></th:block>
+</div>
+</body>
+</html>
