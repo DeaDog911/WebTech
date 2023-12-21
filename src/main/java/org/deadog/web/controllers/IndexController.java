@@ -10,6 +10,11 @@ import org.deadog.web.services.SingleNewsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 
 @Controller
 public class IndexController {
@@ -46,6 +51,44 @@ public class IndexController {
     public String news(Model model) {
         model.addAttribute("news", singleNewsService.findAll());
         return "news";
+    }
+
+    @GetMapping("/news/create")
+    public String getCreateNews() {
+        return "createNews";
+    }
+
+    @PostMapping("/news/create")
+    public String createNews(@RequestParam("title") String title,
+                             @RequestParam("image") MultipartFile image,
+                             @RequestParam("description") String description,
+                             @RequestParam("text") String text) {
+        SingleNews singleNews = new SingleNews();
+        singleNews.setTitle(title);
+        singleNews.setDescription(description);
+        singleNews.setText(text);
+
+        if (!image.isEmpty()) {
+            try {
+                byte[] bytes = image.getBytes();
+                BufferedOutputStream stream =
+                        new BufferedOutputStream(new FileOutputStream("src/main/resources/static/images/" + image.getOriginalFilename()));
+                stream.write(bytes);
+                stream.close();
+            } catch (Exception e) {
+            }
+            singleNews.setImageFileName(image.getOriginalFilename());
+        } else {
+            System.out.println("Вам не удалось загрузить файл, потому что он пустой");
+        }
+        singleNewsService.create(singleNews);
+        return "redirect:/news";
+    }
+
+    @PostMapping("/news/delete/{id}")
+    public String deleteNews(@PathVariable("id") int id) {
+        singleNewsService.deleteById(id);
+        return "redirect:/news";
     }
 
     @GetMapping("/news/{id}")

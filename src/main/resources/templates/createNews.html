@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/styles/index.css}">
+    <link rel="stylesheet" th:href="@{/styles/contacts.css}">
+    <link rel="icon" th:href="@{/images/icon.png}">
+    <title>Создать новость - Сайт о кино</title>
+</head>
+<body>
+
+<div class="wrapper">
+    <th:block th:insert="~{index :: header}"></th:block>
+
+    <main>
+        <section>
+            <h2>Добавить новость</h2>
+            <form th:action="@{/news/create}" method="post" class="creation-form" enctype="multipart/form-data">
+                <label for="title">Заголовок:</label>
+                <input type="text" id="title" name="title" required>
+
+                <label for="image">Изображение: </label>
+                <input type="file" id="image" name="image" >
+
+                <label for="description">Описание новости :</label>
+                <textarea id="description" name="description" required></textarea>
+
+                <label for="text">Тект новости :</label>
+                <textarea id="text" name="text" required></textarea>
+
+                <button type="submit">Отправить</button>
+            </form>
+        </section>
+    </main>
+
+    <th:block th:insert="~{index :: footer}"></th:block>
+</div>
+</body>
+</html>

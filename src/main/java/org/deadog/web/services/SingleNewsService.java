@@ -21,4 +21,12 @@ public class SingleNewsService {
     public SingleNews findById(int id) {
         return singleNewsRepository.findById(id).orElse(null);
     }
+
+    public void create(SingleNews singleNews) {
+        singleNewsRepository.save(singleNews);
+    }
+
+    public void deleteById(int id) {
+        singleNewsRepository.deleteById(id);
+    }
 }
